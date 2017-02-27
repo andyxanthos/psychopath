@@ -65,7 +65,7 @@ class Game
       info[2..-1].each do |stat|
         stat = stat[0..-2]
         split = stat.split(": ")
-        stats[split[0].to_sym] = split[1]
+        stats[split[0].to_sym] = split[1].to_i
       end
       p = Player.new(name, age, stats)
       game_loop(p)

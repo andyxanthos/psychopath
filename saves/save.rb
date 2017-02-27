@@ -1,5 +1,5 @@
 Andy
-45
+23
 level: 1
 money: 100
 current_hp: 15

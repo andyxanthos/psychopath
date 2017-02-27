@@ -54,7 +54,7 @@ class Player < Actor
     puts "Would you like to train attack or defense?"
     puts "(Enter 'attack' or 'defense')"
     answer = gets.chomp.downcase
-
+    ### TRAINING ATTACK
     if answer == "attack"
       puts "How long do you want to train for?"
       puts "(in minutes, at least 2 to gain skill)"
@@ -64,13 +64,8 @@ class Player < Actor
       puts "Do you still want to train? (y/n)"
       response = gets.chomp.downcase
       if response == 'y'
-        if cost <= stats[:money]
-          puts "Okay, training attack for #{time} minutes."
-          gain = (time / 2)
-          stats[:atk] += gain
-          stats[:money] -= cost
-          puts "You have gained #{gain} attack skill points."
-          puts "You now have #{stats[:atk]} attack skill."
+        if cost <= stats[:money].to_i
+          increase_skill("atk", time, cost)
         else
           puts 'You need more money to use the training facility.'
         end
@@ -80,6 +75,13 @@ class Player < Actor
         puts 'Command not recognized.'
       end
     end
+  end
 
+  def increase_skill(skill, time, cost)
+    gain = (time / 2)
+    stats[skill.to_sym] += gain
+    stats[:money] -= cost
+    puts "You have gained #{gain} #{skill} skill points."
+    puts "You now have #{stats[skill.to_sym]} #{skill} points."
   end
 end
