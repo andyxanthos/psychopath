@@ -102,9 +102,8 @@ class Game
             puts "Command not recognized."
           end
 
-          def train
-            player.train
-          end
+        when 'train'
+          player.train
 
       end
     end
