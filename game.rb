@@ -23,10 +23,10 @@ class Game
     puts "// Tell me your name, now."
     puts "(Enter your name below.)"
     name = gets.chomp
-    puts "// Fuck you, #{name}. How old are you?"
+    puts "// Think you're tough, #{name}? Heh. How old are you?"
     age = gets.chomp
     puts "// I ain't believing that for a second."
-    puts "// You look awful."
+    puts "// Good luck out there, kiddo."
     p = Player.new(name, age)
     save_game(p)
     game_loop(p)
@@ -92,6 +92,7 @@ class Game
           puts 'Do you want to save your game? (y/n)'
           answer = gets.chomp[0].downcase
           if answer == 'y'
+            puts "Saving and quitting..."
             save_game(player)
             break
           elsif answer == 'n'
@@ -100,7 +101,11 @@ class Game
           else
             puts "Command not recognized."
           end
-           
+
+          def train
+            player.train
+          end
+
       end
     end
   end

@@ -4,7 +4,7 @@ class Player < Actor
   attr_accessor :name, :age, :stats
 
   def initialize(name, age, stats={})
-    if stats == {}
+    if stats.empty?
       @stats = {
         level: 1,
         money: 100,
@@ -48,5 +48,12 @@ class Player < Actor
     else
       puts "You can not hit this monster! Best to run away."
     end
+  end
+
+  def train
+    puts "Would you like to train offense or defense?"
+    puts "(Pick one.)"
+    answer = gets.chomp.downcase
+
   end
 end
